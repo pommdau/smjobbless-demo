@@ -129,9 +129,9 @@
 				DA1A51E928C9790600C83721 /* ContentView.swift */,
 				DA1A51EB28C9790600C83721 /* Assets.xcassets */,
 				DA1A51F028C9790600C83721 /* SMJobBlessDemo.entitlements */,
-				DA1A51ED28C9790600C83721 /* Preview Content */,
 				DA1A520828C97B7000C83721 /* XPCClient.swift */,
 				DA1A520A28C97B7B00C83721 /* Util.swift */,
+				DA1A51ED28C9790600C83721 /* Preview Content */,
 			);
 			path = SMJobBlessDemo;
 			sourceTree = "<group>";

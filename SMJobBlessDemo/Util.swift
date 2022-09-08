@@ -31,8 +31,7 @@ struct Util {
         // Show `Install Helper` dialog...
         let blessStatus = SMJobBless(kSMDomainSystemLaunchd, label as CFString,
                                      authorization,
-                                     &error)
-        
+                                     &error)        
         if !blessStatus {
             NSLog("[SMJBS]: Helper bless failed with error \(error!.takeUnretainedValue())")
         }

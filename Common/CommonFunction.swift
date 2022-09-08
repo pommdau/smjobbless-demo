@@ -10,7 +10,7 @@ import Foundation
 struct CommonFunction {
     static func createFileToLibrary() {
         do {
-            try "hogehoge".write(toFile: "/Library/LaunchDaemons/SMJobBlessDemo.txt",
+            try "hogehoge".write(toFile: "private/etc/SMJobBlessDemo.txt",
                                  atomically: true,
                                  encoding: .utf8)
         } catch {
@@ -18,3 +18,4 @@ struct CommonFunction {
         }
     }
 }
+

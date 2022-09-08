@@ -15,7 +15,7 @@ class InstallerImpl: NSObject, Installer {
         NSLog("[SMJBS]: \(#function)")
         client?.installationDidReachProgress(1, description: "Finished!")
     }
-    
+
     func uninstall() {
         NSLog("[SMJBS]: \(#function)")
         
