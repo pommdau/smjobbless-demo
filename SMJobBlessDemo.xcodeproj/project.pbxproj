@@ -75,6 +75,9 @@
 		DA1A521328C97BD700C83721 /* Installer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Installer.swift; sourceTree = "<group>"; };
 		DA1A521528C97BF300C83721 /* NSXPCConnection+AuditToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXPCConnection+AuditToken.h"; sourceTree = "<group>"; };
 		DA1A521728C97C3300C83721 /* com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h"; sourceTree = "<group>"; };
+		DAD96F6428C97DBF002DC29A /* SMJobBlessUtil.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = SMJobBlessUtil.py; sourceTree = "<group>"; };
+		DAD96F6528C97DBF002DC29A /* uninstall_privileged_helper.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = uninstall_privileged_helper.sh; sourceTree = "<group>"; };
+		DAD96F6628C97DBF002DC29A /* .python-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".python-version"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,7 @@
 		DA1A51DB28C9790500C83721 = {
 			isa = PBXGroup;
 			children = (
+				DAD96F6328C97DBF002DC29A /* HandyScripts */,
 				DA1A520C28C97B8B00C83721 /* Common */,
 				DA1A51E628C9790500C83721 /* SMJobBlessDemo */,
 				DA1A51FB28C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */,
@@ -158,6 +162,16 @@
 				DA1A520F28C97BAC00C83721 /* Protocols.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DAD96F6328C97DBF002DC29A /* HandyScripts */ = {
+			isa = PBXGroup;
+			children = (
+				DAD96F6428C97DBF002DC29A /* SMJobBlessUtil.py */,
+				DAD96F6528C97DBF002DC29A /* uninstall_privileged_helper.sh */,
+				DAD96F6628C97DBF002DC29A /* .python-version */,
+			);
+			path = HandyScripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -389,7 +403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -468,6 +482,7 @@
 					__launchd_plist,
 					"$(SRCROOT)/${TARGET_NAME}/launchd.plist",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "com.ikeh1024.SMJobBlessDemo.installer/com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -488,6 +503,7 @@
 					__launchd_plist,
 					"$(SRCROOT)/${TARGET_NAME}/launchd.plist",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "com.ikeh1024.SMJobBlessDemo.installer/com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
