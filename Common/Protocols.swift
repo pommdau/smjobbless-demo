@@ -9,6 +9,7 @@ import Foundation
 
 @objc protocol Installer {
     func install()
+    func createFile()
     func uninstall()
 }
 

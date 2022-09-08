@@ -18,7 +18,7 @@
 		DA1A520E28C97B9300C83721 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A520D28C97B9300C83721 /* Constants.swift */; };
 		DA1A521028C97BAC00C83721 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A520F28C97BAC00C83721 /* Protocols.swift */; };
 		DA1A521228C97BBD00C83721 /* XPCServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A521128C97BBD00C83721 /* XPCServer.swift */; };
-		DA1A521428C97BD700C83721 /* Installer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A521328C97BD700C83721 /* Installer.swift */; };
+		DA1A521428C97BD700C83721 /* InstallerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A521328C97BD700C83721 /* InstallerImpl.swift */; };
 		DA1AA76E28C9902E00497C29 /* CommonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA76D28C9902E00497C29 /* CommonFunction.swift */; };
 		DA1AA76F28C9902E00497C29 /* CommonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA76D28C9902E00497C29 /* CommonFunction.swift */; };
 		DAD96F6128C97D09002DC29A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A520D28C97B9300C83721 /* Constants.swift */; };
@@ -74,7 +74,7 @@
 		DA1A520D28C97B9300C83721 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA1A520F28C97BAC00C83721 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		DA1A521128C97BBD00C83721 /* XPCServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCServer.swift; sourceTree = "<group>"; };
-		DA1A521328C97BD700C83721 /* Installer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Installer.swift; sourceTree = "<group>"; };
+		DA1A521328C97BD700C83721 /* InstallerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerImpl.swift; sourceTree = "<group>"; };
 		DA1A521528C97BF300C83721 /* NSXPCConnection+AuditToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXPCConnection+AuditToken.h"; sourceTree = "<group>"; };
 		DA1A521728C97C3300C83721 /* com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA1AA76D28C9902E00497C29 /* CommonFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 				DA1A520628C97A5600C83721 /* launchd.plist */,
 				DA1A520728C97A5D00C83721 /* Info.plist */,
 				DA1A521128C97BBD00C83721 /* XPCServer.swift */,
-				DA1A521328C97BD700C83721 /* Installer.swift */,
+				DA1A521328C97BD700C83721 /* InstallerImpl.swift */,
 				DA1A521528C97BF300C83721 /* NSXPCConnection+AuditToken.h */,
 				DA1A521728C97C3300C83721 /* com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h */,
 			);
@@ -287,7 +287,7 @@
 			files = (
 				DAD96F6128C97D09002DC29A /* Constants.swift in Sources */,
 				DAD96F6228C97D09002DC29A /* Protocols.swift in Sources */,
-				DA1A521428C97BD700C83721 /* Installer.swift in Sources */,
+				DA1A521428C97BD700C83721 /* InstallerImpl.swift in Sources */,
 				DA1A521228C97BBD00C83721 /* XPCServer.swift in Sources */,
 				DA1AA76F28C9902E00497C29 /* CommonFunction.swift in Sources */,
 				DA1A51FD28C979F000C83721 /* main.swift in Sources */,

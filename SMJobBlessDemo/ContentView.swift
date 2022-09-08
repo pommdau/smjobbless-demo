@@ -24,7 +24,10 @@ struct ContentView: View {
         }
         
         Button {
-            
+            guard let installer = client.connection?.remoteObjectProxy as? Installer else {
+                return
+            }
+            installer.createFile()
         } label: {
             Text("Export")
         }
