@@ -11,7 +11,41 @@
 		DA1A51EA28C9790600C83721 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A51E928C9790600C83721 /* ContentView.swift */; };
 		DA1A51EC28C9790600C83721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1A51EB28C9790600C83721 /* Assets.xcassets */; };
 		DA1A51EF28C9790600C83721 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1A51EE28C9790600C83721 /* Preview Assets.xcassets */; };
+		DA1A51FD28C979F000C83721 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A51FC28C979F000C83721 /* main.swift */; };
+		DA1A520428C97A1000C83721 /* com.ikeh1024.SMJobBlessDemo.installer in CopyFiles */ = {isa = PBXBuildFile; fileRef = DA1A51FA28C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DA1A520128C97A0200C83721 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA1A51DC28C9790500C83721 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA1A51F928C979F000C83721;
+			remoteInfo = com.ikeh1024.SMJobBlessDemo.installer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA1A51F828C979F000C83721 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		DA1A520328C97A0500C83721 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				DA1A520428C97A1000C83721 /* com.ikeh1024.SMJobBlessDemo.installer in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DA1A51E428C9790500C83721 /* SMJobBlessDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMJobBlessDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,10 +54,22 @@
 		DA1A51EB28C9790600C83721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA1A51EE28C9790600C83721 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA1A51F028C9790600C83721 /* SMJobBlessDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SMJobBlessDemo.entitlements; sourceTree = "<group>"; };
+		DA1A51FA28C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.ikeh1024.SMJobBlessDemo.installer; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA1A51FC28C979F000C83721 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DA1A520528C97A1E00C83721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DA1A520628C97A5600C83721 /* launchd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = launchd.plist; sourceTree = "<group>"; };
+		DA1A520728C97A5D00C83721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DA1A51E128C9790500C83721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA1A51F728C979F000C83721 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				DA1A51E628C9790500C83721 /* SMJobBlessDemo */,
+				DA1A51FB28C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */,
 				DA1A51E528C9790500C83721 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				DA1A51E428C9790500C83721 /* SMJobBlessDemo.app */,
+				DA1A51FA28C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,6 +100,7 @@
 		DA1A51E628C9790500C83721 /* SMJobBlessDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DA1A520528C97A1E00C83721 /* Info.plist */,
 				DA1A51E728C9790600C83721 /* SMJobBlessDemoApp.swift */,
 				DA1A51E928C9790600C83721 /* ContentView.swift */,
 				DA1A51EB28C9790600C83721 /* Assets.xcassets */,
@@ -69,6 +118,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DA1A51FB28C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */ = {
+			isa = PBXGroup;
+			children = (
+				DA1A51FC28C979F000C83721 /* main.swift */,
+				DA1A520628C97A5600C83721 /* launchd.plist */,
+				DA1A520728C97A5D00C83721 /* Info.plist */,
+			);
+			path = com.ikeh1024.SMJobBlessDemo.installer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,15 +138,34 @@
 				DA1A51E028C9790500C83721 /* Sources */,
 				DA1A51E128C9790500C83721 /* Frameworks */,
 				DA1A51E228C9790500C83721 /* Resources */,
+				DA1A520328C97A0500C83721 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DA1A520228C97A0200C83721 /* PBXTargetDependency */,
 			);
 			name = SMJobBlessDemo;
 			productName = SMJobBlessDemo;
 			productReference = DA1A51E428C9790500C83721 /* SMJobBlessDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		DA1A51F928C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA1A51FE28C979F000C83721 /* Build configuration list for PBXNativeTarget "com.ikeh1024.SMJobBlessDemo.installer" */;
+			buildPhases = (
+				DA1A51F628C979F000C83721 /* Sources */,
+				DA1A51F728C979F000C83721 /* Frameworks */,
+				DA1A51F828C979F000C83721 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = com.ikeh1024.SMJobBlessDemo.installer;
+			productName = com.ikeh1024.SMJobBlessDemo.installer;
+			productReference = DA1A51FA28C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
@@ -100,6 +178,9 @@
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					DA1A51E328C9790500C83721 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					DA1A51F928C979F000C83721 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
@@ -118,6 +199,7 @@
 			projectRoot = "";
 			targets = (
 				DA1A51E328C9790500C83721 /* SMJobBlessDemo */,
+				DA1A51F928C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */,
 			);
 		};
 /* End PBXProject section */
@@ -144,7 +226,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA1A51F628C979F000C83721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA1A51FD28C979F000C83721 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DA1A520228C97A0200C83721 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA1A51F928C979F000C83721 /* com.ikeh1024.SMJobBlessDemo.installer */;
+			targetProxy = DA1A520128C97A0200C83721 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DA1A51F128C9790600C83721 /* Debug */ = {
@@ -274,13 +372,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SMJobBlessDemo/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh1024.SMJobBlessDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh1024.SMJobBlessDemo.uiapplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -301,15 +400,54 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SMJobBlessDemo/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh1024.SMJobBlessDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikeh1024.SMJobBlessDemo.uiapplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DA1A51FF28C979F000C83721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				DEVELOPMENT_TEAM = BWMJMJK727;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"$(SRCROOT)/${TARGET_NAME}/launchd.plist",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DA1A520028C979F000C83721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				DEVELOPMENT_TEAM = BWMJMJK727;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"$(SRCROOT)/${TARGET_NAME}/launchd.plist",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -331,6 +469,15 @@
 			buildConfigurations = (
 				DA1A51F428C9790600C83721 /* Debug */,
 				DA1A51F528C9790600C83721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA1A51FE28C979F000C83721 /* Build configuration list for PBXNativeTarget "com.ikeh1024.SMJobBlessDemo.installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA1A51FF28C979F000C83721 /* Debug */,
+				DA1A520028C979F000C83721 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
