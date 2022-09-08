@@ -64,6 +64,7 @@ class XPCServer: NSObject {
 
 extension XPCServer: NSXPCListenerDelegate {
     
+    // Client can establish XPC connection to the Privideged Helper
     func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
         NSLog("[SMJBS]: \(#function)")
         

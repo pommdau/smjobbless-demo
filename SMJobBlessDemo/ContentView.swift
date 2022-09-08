@@ -16,7 +16,8 @@ struct ContentView: View {
             guard let auth = Util.askAuthorization() else {
                 fatalError("Authorization not acquired.")
             }
-            Util.blessHelper(label: Constant.helperMachLabel, authorization: auth)
+            Util.blessHelper(label: Constant.helperMachLabel,
+                             authorization: auth)
             client.start()
         } label: {
             Text("Action!")

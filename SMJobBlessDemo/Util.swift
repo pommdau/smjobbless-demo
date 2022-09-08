@@ -13,6 +13,7 @@ struct Util {
     static func askAuthorization() -> AuthorizationRef? {
         
         var auth: AuthorizationRef?
+        // Obtain Authorization object
         let status: OSStatus = AuthorizationCreate(nil, nil, [], &auth)
         if status != errAuthorizationSuccess {
             NSLog("[SMJBS]: Authorization failed with status code \(status)")
@@ -27,7 +28,10 @@ struct Util {
     static func blessHelper(label: String, authorization: AuthorizationRef) -> Bool {
         
         var error: Unmanaged<CFError>?
-        let blessStatus = SMJobBless(kSMDomainSystemLaunchd, label as CFString, authorization, &error)
+        // Show `Install Helper` dialog...
+        let blessStatus = SMJobBless(kSMDomainSystemLaunchd, label as CFString,
+                                     authorization,
+                                     &error)
         
         if !blessStatus {
             NSLog("[SMJBS]: Helper bless failed with error \(error!.takeUnretainedValue())")
