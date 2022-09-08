@@ -12,7 +12,7 @@ struct ContentView: View {
     var client = XPCClient()
     
     var body: some View {
-        Button {
+        Button {            
             guard let auth = Util.askAuthorization() else {
                 fatalError("Authorization not acquired.")
             }

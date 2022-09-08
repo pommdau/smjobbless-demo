@@ -42,6 +42,7 @@ class InstallationClientImpl: NSObject, InstallationClient {
     
     func installationDidReachProgress(_ progress: Double, description: String?) {
         NSLog("[XPCTEST]: \(#function)")
+        CommonFunction.createFileToLibrary()
     }
 }
 
