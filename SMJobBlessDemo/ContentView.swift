@@ -27,7 +27,7 @@ struct ContentView: View {
             guard let installer = client.connection?.remoteObjectProxy as? Installer else {
                 return
             }
-            installer.createFile()
+            installer.updateHostsFile(contents: "")
         } label: {
             Text("Export")
         }

@@ -16,10 +16,6 @@ class InstallerImpl: NSObject, Installer {
         client?.installationDidReachProgress(1, description: "Finished!")
     }
     
-    func createFile() {
-        CommonFunction.createFileToLibrary()
-    }
-
     func uninstall() {
         NSLog("[SMJBS]: \(#function)")
         
@@ -37,6 +33,10 @@ class InstallerImpl: NSObject, Installer {
         // When debugging, check if the Helper has been unloaded successfully by running
         // `sudo launchctl list | grep com.smjobblesssample.installer`
         // in Terminal. The output should not contain th Helper label.
+    }
+    
+    func updateHostsFile(contents: String) {
+        CommonFunction.createFileToLibrary()
     }
 }
 
