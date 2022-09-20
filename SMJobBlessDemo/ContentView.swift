@@ -7,9 +7,33 @@
 
 import SwiftUI
 
+struct Plist {
+    let url: URL
+    var contents: String? {
+        do {
+            
+            if !FileManager.default.fileExists(atPath: url.path) {
+                return "(not found)"
+            }
+            
+            guard let plistContent = try NSDictionary(contentsOf: url, error: ()) as? Dictionary<String, Any> else {
+                return nil
+            }
+            return (plistContent as NSDictionary).description
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+}
+
 struct ContentView: View {
     
     var client = XPCClient()
+    @State private var launchDaemonsContents = ""
+    private let launchDaemons = Plist(url: URL(fileURLWithPath: "/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo.installer.plist"))
+        
+    @State private var existsPrivilegedHelperTool = false
     
     var body: some View {
         Button {            
@@ -28,6 +52,8 @@ struct ContentView: View {
                 return
             }
             installer.updateHostsFile(contents: "")
+            
+            updateStatus()
         } label: {
             Text("Export")
         }
@@ -49,19 +75,50 @@ struct ContentView: View {
         } label: {
             Text("Open SMJobBlessDemo.txt")
         }
-        .onAppear() {
-            
-            let plist = URL(fileURLWithPath:"/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo3.helper.plist")
-            do {
-                guard let plistContent = try NSDictionary(contentsOf: plist, error: ()) as? Dictionary<String, Any> else {
-                    return
-                }
-                
-                print(plistContent)
-            } catch {
-                print(error.localizedDescription)
-            }
+        
+        Button {
+            updateStatus()
+        } label: {
+            Text("Update status")
         }
+        
+        launchDaemonsContentsView()
+            .padding()
+        
+        privilegedHelperToolView()
+            .padding()
+        
+        .onAppear() {
+            updateStatus()
+        }
+    }
+    
+    private func updateStatus() {
+        launchDaemonsContents = launchDaemons.contents ?? ""
+        
+        // check
+        let privilegedHelperToolUrl = URL(fileURLWithPath: "/Library/PrivilegedHelperTools/com.ikeh1024.SMJobBlessDemo.installer")
+        existsPrivilegedHelperTool = FileManager.default.fileExists(atPath: privilegedHelperToolUrl.path)
+    }
+    
+    @ViewBuilder
+    private func launchDaemonsContentsView() -> some View {
+        VStack(alignment: .leading) {
+            Text("【\(launchDaemons.url.absoluteString)】")
+            Text(launchDaemonsContents)
+                .fixedSize(horizontal: true, vertical: true)
+        }
+        .textSelection(.enabled)
+        .padding()
+        .background(.background)
+    }
+    
+    @ViewBuilder
+    private func privilegedHelperToolView() -> some View {
+        Text("/Library/PrivilegedHelperTools: \(existsPrivilegedHelperTool ? "exist" : "not found")")
+            .textSelection(.enabled)
+            .padding()
+            .background(.background)
     }
 }
 
