@@ -31,6 +31,24 @@ struct ContentView: View {
         } label: {
             Text("Export")
         }
+        
+        Button {
+            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/LaunchDaemons")
+        } label: {
+            Text("Open LaunchDaemons")
+        }
+        
+        Button {
+            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/PrivilegedHelperTools")
+        } label: {
+            Text("Open PrivilegedHelperTools")
+        }
+        
+        Button {
+            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/private/etc/")
+        } label: {
+            Text("Open SMJobBlessDemo.txt")
+        }
 
     }
 }
