@@ -36,58 +36,62 @@ struct ContentView: View {
     @State private var existsPrivilegedHelperTool = false
     
     var body: some View {
-        Button {            
-            guard let auth = Util.askAuthorization() else {
-                fatalError("Authorization not acquired.")
-            }
-            Util.blessHelper(label: Constant.helperMachLabel,
-                             authorization: auth)
-            client.start()
-        } label: {
-            Text("Action!")
-        }
         
-        Button {
-            guard let installer = client.connection?.remoteObjectProxy as? Installer else {
-                return
+        ScrollView {
+            Button {
+                guard let auth = Util.askAuthorization() else {
+                    fatalError("Authorization not acquired.")
+                }
+                Util.blessHelper(label: Constant.helperMachLabel,
+                                 authorization: auth)
+                client.start()
+            } label: {
+                Text("Action!")
             }
-            installer.updateHostsFile(contents: "")
             
-            updateStatus()
-        } label: {
-            Text("Export")
+            Button {
+                guard let installer = client.connection?.remoteObjectProxy as? Installer else {
+                    return
+                }
+                installer.updateHostsFile(contents: "")
+                
+                updateStatus()
+            } label: {
+                Text("Export")
+            }
+            
+            Button {
+                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/private/etc/")
+            } label: {
+                Text("Open SMJobBlessDemo.txt")
+            }
+            
+            Button {
+                updateStatus()
+            } label: {
+                Text("Update status")
+            }
+            
+            Divider()
+            
+            Button {
+                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/LaunchDaemons")
+            } label: {
+                Text("Open LaunchDaemons")
+            }
+            launchDaemonsContentsView()
+                .padding()
+            
+            Divider()
+            
+            Button {
+                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/PrivilegedHelperTools")
+            } label: {
+                Text("Open PrivilegedHelperTools")
+            }
+            privilegedHelperToolView()
+                .padding()
         }
-        
-        Button {
-            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/LaunchDaemons")
-        } label: {
-            Text("Open LaunchDaemons")
-        }
-        
-        Button {
-            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/PrivilegedHelperTools")
-        } label: {
-            Text("Open PrivilegedHelperTools")
-        }
-        
-        Button {
-            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/private/etc/")
-        } label: {
-            Text("Open SMJobBlessDemo.txt")
-        }
-        
-        Button {
-            updateStatus()
-        } label: {
-            Text("Update status")
-        }
-        
-        launchDaemonsContentsView()
-            .padding()
-        
-        privilegedHelperToolView()
-            .padding()
-        
         .onAppear() {
             updateStatus()
         }
