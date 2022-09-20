@@ -49,7 +49,19 @@ struct ContentView: View {
         } label: {
             Text("Open SMJobBlessDemo.txt")
         }
-
+        .onAppear() {
+            
+            let plist = URL(fileURLWithPath:"/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo3.helper.plist")
+            do {
+                guard let plistContent = try NSDictionary(contentsOf: plist, error: ()) as? Dictionary<String, Any> else {
+                    return
+                }
+                
+                print(plistContent)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
