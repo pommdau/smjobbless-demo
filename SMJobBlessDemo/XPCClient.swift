@@ -29,6 +29,10 @@ class XPCClient {
         installer?.install()
     }
     
+    func stop() {
+        connection?.invalidate()
+    }
+    
     private func connetionInterruptionHandler() {
         NSLog("[XPCTEST] \(type(of: self)): connection has been interrupted XPCTEST")
     }

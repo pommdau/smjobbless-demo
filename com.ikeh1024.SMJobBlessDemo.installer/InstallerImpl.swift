@@ -33,10 +33,32 @@ class InstallerImpl: NSObject, Installer {
         // When debugging, check if the Helper has been unloaded successfully by running
         // `sudo launchctl list | grep com.smjobblesssample.installer`
         // in Terminal. The output should not contain th Helper label.
+        
+//        guard let auth = Util.askAuthorization() else {
+//            fatalError("Authorization not acquired.")
+//        }
+//
+//        var error: Unmanaged<CFError>?
+//        // Show `Install Helper` dialog...
+//        let blessStatus = SMJobBless(kSMDomainSystemLaunchd, label as CFString,
+//                                     authorization,
+//                                     &error)
+//        if !blessStatus {
+//            NSLog("[SMJBS]: Helper bless failed with error \(error!.takeUnretainedValue())")
+//        }
+//
+//        return blessStatus        
     }
     
-    func updateHostsFile(contents: String) {
-        CommonFunction.createFileToLibrary()
+    func exportFile(contents: String) {
+        do {
+            try "hogehoge".write(toFile: "/private/etc/SMJobBlessDemo.txt",
+                                 atomically: true,
+                                 encoding: .utf8)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
+    
 }
 

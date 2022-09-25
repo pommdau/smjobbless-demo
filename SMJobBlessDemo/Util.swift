@@ -29,7 +29,8 @@ struct Util {
         
         var error: Unmanaged<CFError>?
         // Show `Install Helper` dialog...
-        let blessStatus = SMJobBless(kSMDomainSystemLaunchd, label as CFString,
+        let blessStatus = SMJobBless(kSMDomainSystemLaunchd,
+                                     label as CFString,
                                      authorization,
                                      &error)        
         if !blessStatus {
@@ -37,6 +38,24 @@ struct Util {
         }
         
         return blessStatus
+    }
+    
+    @discardableResult
+    static func unblessHelper(label: String, authorization: AuthorizationRef) -> Bool {
+        
+        var error: Unmanaged<CFError>?
+        // Show `Install Helper` dialog...
+        let unblessStatus = SMJobRemove(kSMDomainSystemLaunchd,
+                                        label as CFString,
+                                        authorization,
+                                        true,
+                                        &error)
+        
+        if !unblessStatus {
+            NSLog("[SMJBS]: Helper unbless failed with error \(error!.takeUnretainedValue())")
+        }
+        
+        return unblessStatus
     }
 }
 

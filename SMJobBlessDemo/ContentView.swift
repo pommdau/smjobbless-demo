@@ -7,25 +7,6 @@
 
 import SwiftUI
 
-struct File: Identifiable {
-    let id = UUID()
-    let url: URL
-    var exists: Bool {
-        return FileManager.default.fileExists(atPath: url.path)
-    }
-    
-    func showInFinder() {
-        NSWorkspace.shared.activateFileViewerSelecting([url])
-    }
-}
-
-extension File {
-    static let targetFiles: [File] = [
-        File(url: URL(fileURLWithPath: "/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo.installer.plist")),
-        File(url: URL(fileURLWithPath: "/Library/PrivilegedHelperTools/com.ikeh1024.SMJobBlessDemo.installer")),
-    ]
-}
-
 struct ContentView: View {
     
     private var client = XPCClient()
@@ -40,20 +21,37 @@ struct ContentView: View {
                 }
                 Util.blessHelper(label: Constant.helperMachLabel,
                                  authorization: auth)
-                client.start()
+//                client.start()
             } label: {
-                Text("Action!")
+                Text("Install Helper...")
             }
             
             Button {
-                guard let installer = client.connection?.remoteObjectProxy as? Installer else {
+//                client.start()
+//                guard let helper = client.connection?.remoteObjectProxy as? Installer else {
+//                    return
+//                }
+//                helper.uninstall()
+                guard let auth = Util.askAuthorization() else {
+                    fatalError("Authorization not acquired.")
+                }
+                
+//                Util.unblessHelper(label: Constant.helperMachLabel,
+//                                   authorization: auth)
+                client.stop()
+            } label: {
+                Text("Uninstall Helper...")
+            }
+            
+            Button {
+                client.start()
+                guard let helper = client.connection?.remoteObjectProxy as? Installer else {
                     return
                 }
-                installer.updateHostsFile(contents: "")
-                
+                helper.exportFile(contents: "hogehoge")
                 updateStatus()
             } label: {
-                Text("Export")
+                Text("Export File")
             }
             
             Button {
@@ -64,8 +62,6 @@ struct ContentView: View {
             
             Button {
                 updateStatus()
-                print(files)
-                files.append(File(url: URL(fileURLWithPath: "hogeo")))
             } label: {
                 Text("Update status")
             }
@@ -91,11 +87,11 @@ struct ContentView: View {
             updateStatus()
         }
     }
-    
-    let fruits = ["りんご", "オレンジ", "バナナ"]
-    
-    private func updateStatus() {
         
+    private func updateStatus() {
+        files = files.map({ file in
+            File(url: file.url)
+        })
     }
 }
 
