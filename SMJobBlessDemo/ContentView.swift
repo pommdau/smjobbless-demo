@@ -17,6 +17,7 @@ struct ContentView: View {
         VStack {
             Button {
                 Bless.blessHelper()
+                updateStatus()
             } label: {
                 Text("Install Helper...")
             }
@@ -24,12 +25,14 @@ struct ContentView: View {
             Button {
                 client.removeSMJobBlessFiles()
                 Bless.unblessHelper()
+                updateStatus()
             } label: {
                 Text("Uninstall Helper...")
             }
             
             Button {
                 client.exportFile(contents: "hogehoge")
+                updateStatus()
             } label: {
                 Text("Export File")
             }
