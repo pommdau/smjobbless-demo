@@ -1,10 +1,3 @@
-//
-//  Installer.swift
-//  com.ikeh1024.SMJobBlessDemo.installer
-//
-//  Created by HIROKI IKEUCHI on 2022/09/08.
-//
-
 import Foundation
 
 class InstallerImpl: NSObject, Helper {
@@ -35,8 +28,8 @@ class InstallerImpl: NSObject, Helper {
         // in Terminal. The output should not contain th Helper label.
         
         let files = [
-            URL(fileURLWithPath: "/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo.installer.plist"),
-            URL(fileURLWithPath: "/Library/PrivilegedHelperTools/com.ikeh1024.SMJobBlessDemo.installer"),
+            URL(fileURLWithPath: "/Library/LaunchDaemons/\(Constant.helperMachLabel).plist"),
+            URL(fileURLWithPath: "/Library/PrivilegedHelperTools/\(Constant.helperMachLabel)"),
             URL(fileURLWithPath: "/private/etc/SMJobBlessDemo.txt"),
         ]
         files.forEach { url in
