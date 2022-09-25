@@ -77,14 +77,11 @@ extension XPCServer: NSXPCListenerDelegate {
         
         let installer = InstallerImpl()
         
-        newConnection.exportedInterface = NSXPCInterface(with: Installer.self)
+        newConnection.exportedInterface = NSXPCInterface(with: Helper.self)
         newConnection.exportedObject = installer
-        
         newConnection.remoteObjectInterface = NSXPCInterface(with: InstallationClient.self)
-        
         newConnection.interruptionHandler = connetionInterruptionHandler
         newConnection.invalidationHandler = connectionInvalidationHandler
-        
         newConnection.resume()
         
         installer.client = newConnection.remoteObjectProxy as? InstallationClient

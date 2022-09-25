@@ -7,63 +7,31 @@
 
 import SwiftUI
 
-struct Plist {
-    let url: URL
-    var contents: String? {
-        do {
-            
-            if !FileManager.default.fileExists(atPath: url.path) {
-                return "(not found)"
-            }
-            
-            guard let plistContent = try NSDictionary(contentsOf: url, error: ()) as? Dictionary<String, Any> else {
-                return nil
-            }
-            return (plistContent as NSDictionary).description
-        } catch {
-            print(error.localizedDescription)
-            return nil
-        }
-    }
-}
-
 struct ContentView: View {
     
-    var client = XPCClient()
-    @State private var launchDaemonsContents = ""
-    private let launchDaemons = Plist(url: URL(fileURLWithPath: "/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo.installer.plist"))
-        
-    @State private var existsPrivilegedHelperTool = false
-    
+    private var client = XPCClient()
+    @State private var files = File.targetFiles
+            
     var body: some View {
         
-        ScrollView {
+        VStack {
             Button {
-                guard let auth = Util.askAuthorization() else {
-                    fatalError("Authorization not acquired.")
-                }
-                Util.blessHelper(label: Constant.helperMachLabel,
-                                 authorization: auth)
-                client.start()
+                Bless.blessHelper()
             } label: {
-                Text("Action!")
+                Text("Install Helper...")
             }
             
             Button {
-                guard let installer = client.connection?.remoteObjectProxy as? Installer else {
-                    return
-                }
-                installer.updateHostsFile(contents: "")
-                
-                updateStatus()
+                client.removeSMJobBlessFiles()
+                Bless.unblessHelper()
             } label: {
-                Text("Export")
+                Text("Uninstall Helper...")
             }
             
             Button {
-                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/private/etc/")
+                client.exportFile(contents: "hogehoge")
             } label: {
-                Text("Open SMJobBlessDemo.txt")
+                Text("Export File")
             }
             
             Button {
@@ -72,57 +40,36 @@ struct ContentView: View {
                 Text("Update status")
             }
             
-            Divider()
-            
-            Button {
-                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/LaunchDaemons")
-            } label: {
-                Text("Open LaunchDaemons")
-            }
-            launchDaemonsContentsView()
-                .padding()
-            
-            Divider()
-            
-            Button {
-                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/PrivilegedHelperTools")
-            } label: {
-                Text("Open PrivilegedHelperTools")
-            }
-            privilegedHelperToolView()
-                .padding()
-        }
+            Table(files, columns: {
+                TableColumn("Path") { file in
+                    Text(file.url.path)
+                        .padding(.vertical, 16)
+                }
+                TableColumn("") { file in
+                    if file.exists {
+                        Button {
+                            file.showInFinder()
+                        } label: {
+                            Text("Show in Finder")
+                        }
+                        .padding(.vertical, 16)
+                    } else {
+                        Text("")
+                            .padding(.vertical, 16)
+                    }
+                }
+            })
+            .padding()
+        }        
         .onAppear() {
             updateStatus()
         }
     }
-    
-    private func updateStatus() {
-        launchDaemonsContents = launchDaemons.contents ?? ""
         
-        // check
-        let privilegedHelperToolUrl = URL(fileURLWithPath: "/Library/PrivilegedHelperTools/com.ikeh1024.SMJobBlessDemo.installer")
-        existsPrivilegedHelperTool = FileManager.default.fileExists(atPath: privilegedHelperToolUrl.path)
-    }
-    
-    @ViewBuilder
-    private func launchDaemonsContentsView() -> some View {
-        VStack(alignment: .leading) {
-            Text("【\(launchDaemons.url.absoluteString)】")
-            Text(launchDaemonsContents)
-                .fixedSize(horizontal: true, vertical: true)
-        }
-        .textSelection(.enabled)
-        .padding()
-        .background(.background)
-    }
-    
-    @ViewBuilder
-    private func privilegedHelperToolView() -> some View {
-        Text("/Library/PrivilegedHelperTools: \(existsPrivilegedHelperTool ? "exist" : "not found")")
-            .textSelection(.enabled)
-            .padding()
-            .background(.background)
+    private func updateStatus() {
+        files = files.map({ file in
+            File(url: file.url)
+        })
     }
 }
 

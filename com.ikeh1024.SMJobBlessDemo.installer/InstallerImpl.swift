@@ -7,7 +7,7 @@
 
 import Foundation
 
-class InstallerImpl: NSObject, Installer {
+class InstallerImpl: NSObject, Helper {
     
     var client: InstallationClient?
     
@@ -18,7 +18,7 @@ class InstallerImpl: NSObject, Installer {
     
     func uninstall() {
         NSLog("[SMJBS]: \(#function)")
-        
+                
         // 1. Remove all the client files
         // 2. Kill all the processes
         // 3. Remove the Privileged Helper executable in /Library/PrivilegedHelperTools
@@ -33,10 +33,30 @@ class InstallerImpl: NSObject, Installer {
         // When debugging, check if the Helper has been unloaded successfully by running
         // `sudo launchctl list | grep com.smjobblesssample.installer`
         // in Terminal. The output should not contain th Helper label.
+        
+        let files = [
+            URL(fileURLWithPath: "/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo.installer.plist"),
+            URL(fileURLWithPath: "/Library/PrivilegedHelperTools/com.ikeh1024.SMJobBlessDemo.installer"),
+            URL(fileURLWithPath: "/private/etc/SMJobBlessDemo.txt"),
+        ]
+        files.forEach { url in
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
-    func updateHostsFile(contents: String) {
-        CommonFunction.createFileToLibrary()
+    func exportFile(contents: String) {
+        do {
+            try "hogehoge".write(toFile: "/private/etc/SMJobBlessDemo.txt",
+                                 atomically: true,
+                                 encoding: .utf8)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
+    
 }
 

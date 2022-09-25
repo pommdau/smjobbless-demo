@@ -7,10 +7,10 @@
 
 import Foundation
 
-@objc protocol Installer {
+@objc protocol Helper {
     func install()
     func uninstall()
-    func updateHostsFile(contents: String)
+    func exportFile(contents: String)
 }
 
 @objc public protocol InstallationClient {
