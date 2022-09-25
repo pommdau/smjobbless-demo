@@ -18,7 +18,7 @@ class InstallerImpl: NSObject, Helper {
     
     func uninstall() {
         NSLog("[SMJBS]: \(#function)")
-        
+                
         // 1. Remove all the client files
         // 2. Kill all the processes
         // 3. Remove the Privileged Helper executable in /Library/PrivilegedHelperTools
@@ -34,20 +34,18 @@ class InstallerImpl: NSObject, Helper {
         // `sudo launchctl list | grep com.smjobblesssample.installer`
         // in Terminal. The output should not contain th Helper label.
         
-//        guard let auth = Util.askAuthorization() else {
-//            fatalError("Authorization not acquired.")
-//        }
-//
-//        var error: Unmanaged<CFError>?
-//        // Show `Install Helper` dialog...
-//        let blessStatus = SMJobBless(kSMDomainSystemLaunchd, label as CFString,
-//                                     authorization,
-//                                     &error)
-//        if !blessStatus {
-//            NSLog("[SMJBS]: Helper bless failed with error \(error!.takeUnretainedValue())")
-//        }
-//
-//        return blessStatus        
+        let files = [
+            URL(fileURLWithPath: "/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo.installer.plist"),
+            URL(fileURLWithPath: "/Library/PrivilegedHelperTools/com.ikeh1024.SMJobBlessDemo.installer"),
+            URL(fileURLWithPath: "/private/etc/SMJobBlessDemo.txt"),
+        ]
+        files.forEach { url in
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func exportFile(contents: String) {

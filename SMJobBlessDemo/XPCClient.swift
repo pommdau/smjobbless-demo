@@ -43,7 +43,14 @@ class XPCClient {
         stopConnection()
     }
     
-    
+    func removeSMJobBlessFiles() {
+        startConnection()
+        guard let helper = helper else {
+            return
+        }
+        helper.uninstall()
+        stopConnection()
+    }
     
     private func connetionInterruptionHandler() {
         NSLog("[XPCTEST] \(type(of: self)): connection has been interrupted XPCTEST")

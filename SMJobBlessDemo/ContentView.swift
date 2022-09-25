@@ -22,22 +22,16 @@ struct ContentView: View {
             }
             
             Button {
+                client.removeSMJobBlessFiles()
                 Bless.unblessHelper()
             } label: {
                 Text("Uninstall Helper...")
             }
             
             Button {
-                
                 client.exportFile(contents: "hogehoge")
             } label: {
                 Text("Export File")
-            }
-            
-            Button {
-                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/private/etc/")
-            } label: {
-                Text("Open SMJobBlessDemo.txt")
             }
             
             Button {
@@ -49,7 +43,7 @@ struct ContentView: View {
             Table(files, columns: {
                 TableColumn("Path") { file in
                     Text(file.url.path)
-                        .padding(.vertical, 8)
+                        .padding(.vertical, 16)
                 }
                 TableColumn("") { file in
                     if file.exists {
@@ -58,14 +52,15 @@ struct ContentView: View {
                         } label: {
                             Text("Show in Finder")
                         }
-                        .padding(.vertical, 8)
+                        .padding(.vertical, 16)
+                    } else {
+                        Text("")
+                            .padding(.vertical, 16)
                     }
                 }
             })
             .padding()
-        }
-
-        
+        }        
         .onAppear() {
             updateStatus()
         }
