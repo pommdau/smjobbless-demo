@@ -440,6 +440,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HELPER_IDENTIFIER = com.ikeh1024.SMJobBlessDemo.helper;
 				INFOPLIST_FILE = SMJobBlessDemo/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -469,6 +470,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HELPER_IDENTIFIER = com.ikeh1024.SMJobBlessDemo.helper;
 				INFOPLIST_FILE = SMJobBlessDemo/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -487,10 +489,12 @@
 		DA1A51FF28C979F000C83721 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLIENT_IDENTIFIER = com.ikeh1024.SMJobBlessDemo.uiapplication;
 				CODE_SIGN_STYLE = Automatic;
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEVELOPMENT_TEAM = BWMJMJK727;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HELPER_IDENTIFIER = com.ikeh1024.SMJobBlessDemo.helper;
 				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
 				OTHER_LDFLAGS = (
 					"-sectcreate",
@@ -509,10 +513,12 @@
 		DA1A520028C979F000C83721 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLIENT_IDENTIFIER = com.ikeh1024.SMJobBlessDemo.uiapplication;
 				CODE_SIGN_STYLE = Automatic;
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEVELOPMENT_TEAM = BWMJMJK727;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HELPER_IDENTIFIER = com.ikeh1024.SMJobBlessDemo.helper;
 				INFOPLIST_FILE = "$(SRCROOT)/$(TARGET_NAME)/Info.plist";
 				OTHER_LDFLAGS = (
 					"-sectcreate",

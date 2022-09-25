@@ -5,7 +5,7 @@
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>com.ikeh1024.SMJobBlessDemo.helper</key>
-		<string>identifier &quot;com.ikeh1024.SMJobBlessDemo.helper&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;$(SIGNING_IDENTITY)&quot; </string>
+		<string>identifier &quot;$(HELPER_IDENTIFIER)&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;$(SIGNING_IDENTITY)&quot; </string>
 	</dict>
 </dict>
 </plist>
