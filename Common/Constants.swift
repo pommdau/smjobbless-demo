@@ -8,5 +8,5 @@
 import Foundation
 
 struct Constant {
-    static let helperMachLabel = "com.ikeh1024.SMJobBlessDemo.installer"
+    static let helperMachLabel = "com.ikeh1024.SMJobBlessDemo.helper"
 }

@@ -32,7 +32,9 @@ struct ContentView: View {
             
             Button {
                 client.exportFile(contents: "hogehoge")
-                updateStatus()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    updateStatus()
+                }
             } label: {
                 Text("Export File")
             }

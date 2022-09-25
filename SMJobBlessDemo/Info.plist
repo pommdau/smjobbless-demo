@@ -4,8 +4,8 @@
 <dict>
 	<key>SMPrivilegedExecutables</key>
 	<dict>
-		<key>com.ikeh1024.SMJobBlessDemo.installer</key>
-		<string>identifier &quot;com.ikeh1024.SMJobBlessDemo.installer&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;$(SIGNING_IDENTITY)&quot; </string>
+		<key>com.ikeh1024.SMJobBlessDemo.helper</key>
+		<string>identifier &quot;com.ikeh1024.SMJobBlessDemo.helper&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;$(SIGNING_IDENTITY)&quot; </string>
 	</dict>
 </dict>
 </plist>

@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.ikeh1024.SMJobBlessDemo.installer</string>
+	<string>com.ikeh1024.SMJobBlessDemo.helper</string>
 	<key>MachServices</key>
 	<dict>
-		<key>com.ikeh1024.SMJobBlessDemo.installer</key>
+		<key>com.ikeh1024.SMJobBlessDemo.helper</key>
 		<true/>
 	</dict>
 </dict>
