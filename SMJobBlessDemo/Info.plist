@@ -5,7 +5,7 @@
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>com.ikeh1024.SMJobBlessDemo.installer</key>
-		<string>identifier "com.ikeh1024.SMJobBlessDemo.installer" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: HIROKI IKEUCHI (7B3ZX97MAS)" </string>
+		<string>identifier &quot;com.ikeh1024.SMJobBlessDemo.installer&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Apple Development: HIROKI IKEUCHI (7B3ZX97MAS)&quot; </string>
 	</dict>
 </dict>
 </plist>

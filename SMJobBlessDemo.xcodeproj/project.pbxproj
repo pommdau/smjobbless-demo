@@ -18,7 +18,9 @@
 		DA1A520E28C97B9300C83721 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A520D28C97B9300C83721 /* Constants.swift */; };
 		DA1A521028C97BAC00C83721 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A520F28C97BAC00C83721 /* Protocols.swift */; };
 		DA1A521228C97BBD00C83721 /* XPCServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A521128C97BBD00C83721 /* XPCServer.swift */; };
-		DA1A521428C97BD700C83721 /* Installer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A521328C97BD700C83721 /* Installer.swift */; };
+		DA1A521428C97BD700C83721 /* InstallerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A521328C97BD700C83721 /* InstallerImpl.swift */; };
+		DA1AA76E28C9902E00497C29 /* CommonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA76D28C9902E00497C29 /* CommonFunction.swift */; };
+		DA1AA76F28C9902E00497C29 /* CommonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA76D28C9902E00497C29 /* CommonFunction.swift */; };
 		DAD96F6128C97D09002DC29A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A520D28C97B9300C83721 /* Constants.swift */; };
 		DAD96F6228C97D09002DC29A /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A520F28C97BAC00C83721 /* Protocols.swift */; };
 /* End PBXBuildFile section */
@@ -72,9 +74,10 @@
 		DA1A520D28C97B9300C83721 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA1A520F28C97BAC00C83721 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		DA1A521128C97BBD00C83721 /* XPCServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCServer.swift; sourceTree = "<group>"; };
-		DA1A521328C97BD700C83721 /* Installer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Installer.swift; sourceTree = "<group>"; };
+		DA1A521328C97BD700C83721 /* InstallerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerImpl.swift; sourceTree = "<group>"; };
 		DA1A521528C97BF300C83721 /* NSXPCConnection+AuditToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXPCConnection+AuditToken.h"; sourceTree = "<group>"; };
 		DA1A521728C97C3300C83721 /* com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h"; sourceTree = "<group>"; };
+		DA1AA76D28C9902E00497C29 /* CommonFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
 		DAD96F6428C97DBF002DC29A /* SMJobBlessUtil.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = SMJobBlessUtil.py; sourceTree = "<group>"; };
 		DAD96F6528C97DBF002DC29A /* uninstall_privileged_helper.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = uninstall_privileged_helper.sh; sourceTree = "<group>"; };
 		DAD96F6628C97DBF002DC29A /* .python-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".python-version"; sourceTree = "<group>"; };
@@ -126,9 +129,9 @@
 				DA1A51E928C9790600C83721 /* ContentView.swift */,
 				DA1A51EB28C9790600C83721 /* Assets.xcassets */,
 				DA1A51F028C9790600C83721 /* SMJobBlessDemo.entitlements */,
-				DA1A51ED28C9790600C83721 /* Preview Content */,
 				DA1A520828C97B7000C83721 /* XPCClient.swift */,
 				DA1A520A28C97B7B00C83721 /* Util.swift */,
+				DA1A51ED28C9790600C83721 /* Preview Content */,
 			);
 			path = SMJobBlessDemo;
 			sourceTree = "<group>";
@@ -148,7 +151,7 @@
 				DA1A520628C97A5600C83721 /* launchd.plist */,
 				DA1A520728C97A5D00C83721 /* Info.plist */,
 				DA1A521128C97BBD00C83721 /* XPCServer.swift */,
-				DA1A521328C97BD700C83721 /* Installer.swift */,
+				DA1A521328C97BD700C83721 /* InstallerImpl.swift */,
 				DA1A521528C97BF300C83721 /* NSXPCConnection+AuditToken.h */,
 				DA1A521728C97C3300C83721 /* com.ikeh1024.SMJobBlessDemo.installer-Bridging-Header.h */,
 			);
@@ -160,6 +163,7 @@
 			children = (
 				DA1A520D28C97B9300C83721 /* Constants.swift */,
 				DA1A520F28C97BAC00C83721 /* Protocols.swift */,
+				DA1AA76D28C9902E00497C29 /* CommonFunction.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -268,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA1A520E28C97B9300C83721 /* Constants.swift in Sources */,
+				DA1AA76E28C9902E00497C29 /* CommonFunction.swift in Sources */,
 				DA1A520928C97B7000C83721 /* XPCClient.swift in Sources */,
 				DA1A51EA28C9790600C83721 /* ContentView.swift in Sources */,
 				DA1A521028C97BAC00C83721 /* Protocols.swift in Sources */,
@@ -282,8 +287,9 @@
 			files = (
 				DAD96F6128C97D09002DC29A /* Constants.swift in Sources */,
 				DAD96F6228C97D09002DC29A /* Protocols.swift in Sources */,
-				DA1A521428C97BD700C83721 /* Installer.swift in Sources */,
+				DA1A521428C97BD700C83721 /* InstallerImpl.swift in Sources */,
 				DA1A521228C97BBD00C83721 /* XPCServer.swift in Sources */,
+				DA1AA76F28C9902E00497C29 /* CommonFunction.swift in Sources */,
 				DA1A51FD28C979F000C83721 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -403,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

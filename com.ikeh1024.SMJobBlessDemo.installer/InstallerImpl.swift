@@ -34,5 +34,9 @@ class InstallerImpl: NSObject, Installer {
         // `sudo launchctl list | grep com.smjobblesssample.installer`
         // in Terminal. The output should not contain th Helper label.
     }
+    
+    func updateHostsFile(contents: String) {
+        CommonFunction.createFileToLibrary()
+    }
 }
 

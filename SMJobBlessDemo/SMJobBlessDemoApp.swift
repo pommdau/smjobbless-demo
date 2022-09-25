@@ -12,7 +12,7 @@ struct SMJobBlessDemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(width: 300, height: 200)
+                .frame(minWidth: 300, minHeight: 200)
         }
     }
 }
