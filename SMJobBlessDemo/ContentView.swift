@@ -7,37 +7,33 @@
 
 import SwiftUI
 
-struct Plist {
+struct File: Identifiable {
+    let id = UUID()
     let url: URL
-    var contents: String? {
-        do {
-            
-            if !FileManager.default.fileExists(atPath: url.path) {
-                return "(not found)"
-            }
-            
-            guard let plistContent = try NSDictionary(contentsOf: url, error: ()) as? Dictionary<String, Any> else {
-                return nil
-            }
-            return (plistContent as NSDictionary).description
-        } catch {
-            print(error.localizedDescription)
-            return nil
-        }
+    var exists: Bool {
+        return FileManager.default.fileExists(atPath: url.path)
     }
+    
+    func showInFinder() {
+        NSWorkspace.shared.activateFileViewerSelecting([url])
+    }
+}
+
+extension File {
+    static let targetFiles: [File] = [
+        File(url: URL(fileURLWithPath: "/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo.installer.plist")),
+        File(url: URL(fileURLWithPath: "/Library/PrivilegedHelperTools/com.ikeh1024.SMJobBlessDemo.installer")),
+    ]
 }
 
 struct ContentView: View {
     
-    var client = XPCClient()
-    @State private var launchDaemonsContents = ""
-    private let launchDaemons = Plist(url: URL(fileURLWithPath: "/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo.installer.plist"))
-        
-    @State private var existsPrivilegedHelperTool = false
-    
+    private var client = XPCClient()
+    @State private var files = File.targetFiles
+            
     var body: some View {
         
-        ScrollView {
+        VStack {
             Button {
                 guard let auth = Util.askAuthorization() else {
                     fatalError("Authorization not acquired.")
@@ -68,61 +64,38 @@ struct ContentView: View {
             
             Button {
                 updateStatus()
+                print(files)
+                files.append(File(url: URL(fileURLWithPath: "hogeo")))
             } label: {
                 Text("Update status")
             }
             
-            Divider()
-            
-            Button {
-                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/LaunchDaemons")
-            } label: {
-                Text("Open LaunchDaemons")
-            }
-            launchDaemonsContentsView()
-                .padding()
-            
-            Divider()
-            
-            Button {
-                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: "/Library/PrivilegedHelperTools")
-            } label: {
-                Text("Open PrivilegedHelperTools")
-            }
-            privilegedHelperToolView()
-                .padding()
+            Table(files, columns: {
+                TableColumn("Path", value: \.url.path)
+                TableColumn("") { file in
+                    if file.exists {
+                        Button {
+                            file.showInFinder()
+                        } label: {
+                            Text("Show in Finder")
+                        }
+                        .padding()
+                    }
+                }
+            })
+            .padding()
         }
+
+        
         .onAppear() {
             updateStatus()
         }
     }
     
+    let fruits = ["りんご", "オレンジ", "バナナ"]
+    
     private func updateStatus() {
-        launchDaemonsContents = launchDaemons.contents ?? ""
         
-        // check
-        let privilegedHelperToolUrl = URL(fileURLWithPath: "/Library/PrivilegedHelperTools/com.ikeh1024.SMJobBlessDemo.installer")
-        existsPrivilegedHelperTool = FileManager.default.fileExists(atPath: privilegedHelperToolUrl.path)
-    }
-    
-    @ViewBuilder
-    private func launchDaemonsContentsView() -> some View {
-        VStack(alignment: .leading) {
-            Text("【\(launchDaemons.url.absoluteString)】")
-            Text(launchDaemonsContents)
-                .fixedSize(horizontal: true, vertical: true)
-        }
-        .textSelection(.enabled)
-        .padding()
-        .background(.background)
-    }
-    
-    @ViewBuilder
-    private func privilegedHelperToolView() -> some View {
-        Text("/Library/PrivilegedHelperTools: \(existsPrivilegedHelperTool ? "exist" : "not found")")
-            .textSelection(.enabled)
-            .padding()
-            .background(.background)
     }
 }
 
