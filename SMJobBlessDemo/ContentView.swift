@@ -16,40 +16,20 @@ struct ContentView: View {
         
         VStack {
             Button {
-                guard let auth = Util.askAuthorization() else {
-                    fatalError("Authorization not acquired.")
-                }
-                Util.blessHelper(label: Constant.helperMachLabel,
-                                 authorization: auth)
-//                client.start()
+                Bless.blessHelper()
             } label: {
                 Text("Install Helper...")
             }
             
             Button {
-//                client.start()
-//                guard let helper = client.connection?.remoteObjectProxy as? Installer else {
-//                    return
-//                }
-//                helper.uninstall()
-                guard let auth = Util.askAuthorization() else {
-                    fatalError("Authorization not acquired.")
-                }
-                
-//                Util.unblessHelper(label: Constant.helperMachLabel,
-//                                   authorization: auth)
-                client.stop()
+                Bless.unblessHelper()
             } label: {
                 Text("Uninstall Helper...")
             }
             
             Button {
-                client.start()
-                guard let helper = client.connection?.remoteObjectProxy as? Installer else {
-                    return
-                }
-                helper.exportFile(contents: "hogehoge")
-                updateStatus()
+                
+                client.exportFile(contents: "hogehoge")
             } label: {
                 Text("Export File")
             }
@@ -67,7 +47,10 @@ struct ContentView: View {
             }
             
             Table(files, columns: {
-                TableColumn("Path", value: \.url.path)
+                TableColumn("Path") { file in
+                    Text(file.url.path)
+                        .padding(.vertical, 8)
+                }
                 TableColumn("") { file in
                     if file.exists {
                         Button {
@@ -75,7 +58,7 @@ struct ContentView: View {
                         } label: {
                             Text("Show in Finder")
                         }
-                        .padding()
+                        .padding(.vertical, 8)
                     }
                 }
             })

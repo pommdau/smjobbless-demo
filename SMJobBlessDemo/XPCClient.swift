@@ -9,29 +9,41 @@ import Foundation
 
 class XPCClient {
     
-    var connection: NSXPCConnection?
+    private var connection: NSXPCConnection?
     
-    func start() {
+    private var helper: Helper? {
+        return connection?.remoteObjectProxy as? Helper
+    }
+    
+    // MARK: - XPCConnection
+    
+    private func startConnection() {
         connection = NSXPCConnection(machServiceName: Constant.helperMachLabel,
                                          options: .privileged)
-        
         connection?.exportedInterface = NSXPCInterface(with: InstallationClient.self)
         connection?.exportedObject = InstallationClientImpl()
-        connection?.remoteObjectInterface = NSXPCInterface(with: Installer.self)
-        
+        connection?.remoteObjectInterface = NSXPCInterface(with: Helper.self)
         connection?.invalidationHandler = connectionInvalidationHandler
         connection?.interruptionHandler = connetionInterruptionHandler
-        
         connection?.resume()
-
-        let installer = connection?.remoteObjectProxy as? Installer
-        
-        installer?.install()
     }
     
-    func stop() {
+    private func stopConnection() {
         connection?.invalidate()
     }
+    
+    // MARK: - Installer Methods
+    
+    func exportFile(contents: String) {
+        startConnection()
+        guard let helper = helper else {
+            return
+        }
+        helper.exportFile(contents: contents)
+        stopConnection()
+    }
+    
+    
     
     private func connetionInterruptionHandler() {
         NSLog("[XPCTEST] \(type(of: self)): connection has been interrupted XPCTEST")

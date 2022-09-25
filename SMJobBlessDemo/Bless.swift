@@ -1,5 +1,5 @@
 //
-//  Util.swift
+//  Bless.swift
 //  SMJobBlessDemo
 //
 //  Created by HIROKI IKEUCHI on 2022/09/08.
@@ -8,16 +8,15 @@
 import SecurityFoundation
 import ServiceManagement
 
-struct Util {
+struct Bless {
     
-    static func askAuthorization() -> AuthorizationRef? {
+    static private func askAuthorization() -> AuthorizationRef? {
         
         var auth: AuthorizationRef?
         // Obtain Authorization object
         let status: OSStatus = AuthorizationCreate(nil, nil, [], &auth)
         if status != errAuthorizationSuccess {
             NSLog("[SMJBS]: Authorization failed with status code \(status)")
-            
             return nil
         }
         
@@ -25,13 +24,17 @@ struct Util {
     }
     
     @discardableResult
-    static func blessHelper(label: String, authorization: AuthorizationRef) -> Bool {
+    static func blessHelper() -> Bool {
+        
+        guard let auth = Bless.askAuthorization() else {
+            fatalError("Authorization not acquired.")
+        }
         
         var error: Unmanaged<CFError>?
         // Show `Install Helper` dialog...
         let blessStatus = SMJobBless(kSMDomainSystemLaunchd,
-                                     label as CFString,
-                                     authorization,
+                                     Constant.helperMachLabel as CFString,
+                                     auth,
                                      &error)        
         if !blessStatus {
             NSLog("[SMJBS]: Helper bless failed with error \(error!.takeUnretainedValue())")
@@ -41,13 +44,17 @@ struct Util {
     }
     
     @discardableResult
-    static func unblessHelper(label: String, authorization: AuthorizationRef) -> Bool {
+    static func unblessHelper() -> Bool {
+        
+        guard let auth = Bless.askAuthorization() else {
+            fatalError("Authorization not acquired.")
+        }
         
         var error: Unmanaged<CFError>?
         // Show `Install Helper` dialog...
         let unblessStatus = SMJobRemove(kSMDomainSystemLaunchd,
-                                        label as CFString,
-                                        authorization,
+                                        Constant.helperMachLabel as CFString,
+                                        auth,
                                         true,
                                         &error)
         

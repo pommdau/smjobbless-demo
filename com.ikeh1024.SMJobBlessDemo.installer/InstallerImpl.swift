@@ -7,7 +7,7 @@
 
 import Foundation
 
-class InstallerImpl: NSObject, Installer {
+class InstallerImpl: NSObject, Helper {
     
     var client: InstallationClient?
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc protocol Installer {
+@objc protocol Helper {
     func install()
     func uninstall()
     func exportFile(contents: String)
