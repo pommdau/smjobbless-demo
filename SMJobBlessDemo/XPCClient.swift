@@ -32,7 +32,7 @@ class XPCClient {
         connection?.invalidate()
     }
     
-    // MARK: - Installer Methods
+    // MARK: - Helper Methods
     
     func exportFile(contents: String) {
         startConnection()

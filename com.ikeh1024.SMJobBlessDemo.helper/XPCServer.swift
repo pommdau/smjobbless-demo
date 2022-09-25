@@ -1,10 +1,3 @@
-//
-//  XPCServer.swift
-//  com.ikeh1024.SMJobBlessDemo.installer
-//
-//  Created by HIROKI IKEUCHI on 2022/09/08.
-//
-
 import Foundation
 
 class XPCServer: NSObject {
@@ -47,7 +40,7 @@ class XPCServer: NSObject {
         }
         // in this sample we duplicate the requirements from the Info.plist for simplicity
         // in a commercial application you could want to put the requirements in one place, for example in Active Compilation Conditions (Swift), or in preprocessor definitions (C, Objective-C)
-        let entitlements = "identifier \"com.ikeh1024.SMJobBlessDemo.uiapplication\" and anchor apple generic and certificate leaf[subject.CN] = \"Apple Development: HIROKI IKEUCHI (7B3ZX97MAS)\""
+        let entitlements = "identifier \"\(Constant.clientIdentifier)\" and anchor apple generic and certificate leaf[subject.CN] = \"\(Constant.signingIdentifier)\""
         var requirement: SecRequirement?
         
         status = SecRequirementCreateWithString(entitlements as CFString, flags, &requirement)

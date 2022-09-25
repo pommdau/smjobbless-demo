@@ -33,8 +33,8 @@ struct File: Identifiable {
 
 extension File {
     static let targetFiles: [File] = [
-        File(url: URL(fileURLWithPath: "/Library/LaunchDaemons/com.ikeh1024.SMJobBlessDemo.installer.plist")),
-        File(url: URL(fileURLWithPath: "/Library/PrivilegedHelperTools/com.ikeh1024.SMJobBlessDemo.installer")),
+        File(url: URL(fileURLWithPath: "/Library/LaunchDaemons/\(Constant.helperMachLabel).plist")),
+        File(url: URL(fileURLWithPath: "/Library/PrivilegedHelperTools/\(Constant.helperMachLabel)")),
         File(url: URL(fileURLWithPath: "/private/etc/SMJobBlessDemo.txt"))
     ]
 }

@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.ikeh1024.SMJobBlessDemo.installer</string>
+	<string>$(HELPER_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>SMAuthorizedClients</key>
 	<array>
-		<string>identifier &quot;com.ikeh1024.SMJobBlessDemo.uiapplication&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Apple Development: HIROKI IKEUCHI (7B3ZX97MAS)&quot;</string>
+		<string>identifier &quot;$(CLIENT_IDENTIFIER)&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;$(SIGNING_IDENTITY)&quot;</string>
 	</array>
 </dict>
 </plist>

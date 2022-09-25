@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PRIVILEGED_HELPER_LABEL=com.ikeh1024.SMJobBlessDemo.installer
+PRIVILEGED_HELPER_LABEL=com.ikeh1024.SMJobBlessDemo.helper
 
 sudo rm /Library/PrivilegedHelperTools/$PRIVILEGED_HELPER_LABEL
 sudo rm /Library/LaunchDaemons/$PRIVILEGED_HELPER_LABEL.plist
