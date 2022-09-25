@@ -14,7 +14,32 @@ struct ContentView: View {
             
     var body: some View {
         
-        VStack {
+        VStack(alignment: .leading) {
+            actionButtons()
+            filesTable()
+        }
+        .padding()
+        .onAppear() {
+            updateStatus()
+        }
+    }
+    
+    // MARK: - Helpers
+        
+    private func updateStatus() {
+        files = files.map({ file in
+            File(url: file.url)
+        })
+    }
+}
+
+// MARK: - ViewBuilder
+
+extension ContentView {
+    
+    @ViewBuilder
+    private func actionButtons() -> some View {
+        HStack {
             Button {
                 Bless.blessHelper()
                 updateStatus()
@@ -44,36 +69,29 @@ struct ContentView: View {
             } label: {
                 Text("Update status")
             }
-            
-            Table(files, columns: {
-                TableColumn("Path") { file in
-                    Text(file.url.path)
-                        .padding(.vertical, 16)
-                }
-                TableColumn("") { file in
-                    if file.exists {
-                        Button {
-                            file.showInFinder()
-                        } label: {
-                            Text("Show in Finder")
-                        }
-                        .padding(.vertical, 16)
-                    } else {
-                        Text("")
-                            .padding(.vertical, 16)
-                    }
-                }
-            })
-            .padding()
-        }        
-        .onAppear() {
-            updateStatus()
         }
     }
-        
-    private func updateStatus() {
-        files = files.map({ file in
-            File(url: file.url)
+    
+    @ViewBuilder
+    private func filesTable() -> some View {
+        Table(files, columns: {
+            TableColumn("Path") { file in
+                Text(file.url.path)
+                    .padding(.vertical, 16)
+            }
+            TableColumn("") { file in
+                if file.exists {
+                    Button {
+                        file.showInFinder()
+                    } label: {
+                        Text("Show in Finder")
+                    }
+                    .padding(.vertical, 16)
+                } else {
+                    Text("")
+                        .padding(.vertical, 16)
+                }
+            }
         })
     }
 }
