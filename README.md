@@ -45,22 +45,13 @@
 
 ### 証明書
 - [Apple Developer Programの証明書（Certificates）の種類まとめ](https://qiita.com/daimyo404/items/69392d62c2eac4299d12)
-- とりあえず`Developer ID Installer`だとうまく権限が取得できないようということだけ分かった。
-
-```
-(Good)
-Apple Development: HIROKI IKEUCHI (7B3ZX97MAS)
-
-(Error)
-Developer ID Installer: HIROKI IKEUCHI (xxxxxxxxxx)
-```
+    - 試したところ`Developer ID Application`もしくは`Apple Development:`だとうまくいくが、`Developer ID Installer`だとうまく権限が取得できないようである。
 
 >[Mac App Store への公開ガイド](https://www.electronjs.org/ja/docs/latest/tutorial/mac-app-store-submission-guide)
 >"Developer ID Application" 証明書は、アプリを Mac App Store 以外で頒布する前の署名に使用します。
 
 - App Store外で配布するときに下記より公証を行う。
-- その際の署名は`Developer ID Application: HIROKI IKEUCHI (BWMJMJK727)`のようになる。
-- 開発時は`Developer ID Application`を使えない？ ので、開発時は`Apple Development`などを使って、リリース時に置き換えるとりあえずの運用とするのがいいか。
+- その際の署名は`Developer ID Application: HIROKI IKEUCHI (BWMJMJK727)`となるので、ローカルのデバッグ時もこちらを使うと良さそう。
 
 ![image](https://user-images.githubusercontent.com/29433103/201918686-a8a00f63-a379-435c-b31e-1dfcc82f4bde.png)
 
