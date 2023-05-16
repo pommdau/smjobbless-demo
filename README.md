@@ -3,6 +3,12 @@
 
 <img width="800" alt="image" src="https://i.imgur.com/TG54l6i.png">
 
+## TODO:
+>サンドボックス アプリでは、Processクラスを使用して作成した子プロセスは親アプリのサンドボックスを継承します。代わりに、ヘルパー アプリを XPC サービスとして作成します。これにより、ヘルパー アプリにさまざまなサンドボックス資格を指定できるようになります。詳細については、「デーモンおよびサービス プログラミング ガイド」および「XPC」を参照してください。
+
+- サンドボックスでも実装可能？
+  - https://developer.apple.com/documentation/foundation/process
+
 ## 参考
 ### aronskaya
 - [aronskaya/smjobbless](https://github.com/aronskaya/smjobbless#used-definitions)
